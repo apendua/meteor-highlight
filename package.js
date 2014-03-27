@@ -5,8 +5,8 @@ Package.describe({
 
 Package.on_use(function (api) {
 
-  api.use(['underscore', 'jquery'], 'client');
-  api.use(['ui', 'handlebars'], 'client', { week: true });
+  api.use(['deps', 'underscore', 'jquery'], 'client');
+  api.use(['spacebars', 'ui', 'handlebars'], 'client', { week: true });
 
   api.add_files([
     'highlight.css',

@@ -1,5 +1,5 @@
 
-if (Handlebars !== undefined && UI !== undefined) {
+if (typeof Handlebars !== 'undefined' && typeof UI !== 'undefined' && typeof Spacebars !== 'undefined') {
 
   Handlebars.registerHelper('highlight', function () {
     var dependency = new Deps.Dependency(),
@@ -10,7 +10,7 @@ if (Handlebars !== undefined && UI !== undefined) {
         var self = this;
         self.highlight = Deps.autorun(function () {
           var $query = $(self.firstNode).nextAll();
-          $query.unhighlight();
+          $query.unhighlight(); // TODO: do we need this part?
           $query.highlight(options.keywords);
           dependency.depend();
         });
