@@ -1,0 +1,9 @@
+{
+  "name": "highlight",
+  "description": "Allows you to highlight parts of text",
+  "homepage": "https://github.com/apendua/meteor-highlight",
+  "author": "Tomasz Lenarcik",
+  "version": "0.0.1",
+  "git": "https://github.com/apendua/meteor-highlight.git",
+  "packages": {}
+}
