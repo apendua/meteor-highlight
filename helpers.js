@@ -3,15 +3,18 @@ if (typeof Handlebars !== 'undefined' && typeof UI !== 'undefined' && typeof Spa
 
   Handlebars.registerHelper('highlight', function () {
     var dependency = new Deps.Dependency(),
+        keywords = '',
         options = this;
 
     return UI.Component.extend({
       parented: function () {
         var self = this;
         self.highlight = Deps.autorun(function () {
-          var $query = $(self.firstNode).nextAll();
-          $query.unhighlight(); // TODO: do we need this part?
-          $query.highlight(options.keywords);
+          $(self.firstNode)
+            .nextAll()
+            .unhighlight() // TODO: do we need this part?
+            .highlight(keywords);
+
           dependency.depend();
         });
       },
@@ -19,6 +22,7 @@ if (typeof Handlebars !== 'undefined' && typeof UI !== 'undefined' && typeof Spa
         var self = this;
         return function () {
           UI.toRawText(self.__content, self); // this triggers reactivity
+          keywords = Spacebars.call(self.lookup('keywords'), options.keywords) || '';
           dependency.changed();
           return self.__content;
         };
