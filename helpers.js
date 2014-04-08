@@ -7,7 +7,7 @@ if (typeof Handlebars !== 'undefined' && typeof UI !== 'undefined' && typeof Spa
         options = this;
 
     return UI.Component.extend({
-      parented: function () {
+      materialized: function () {
         var self = this;
         self.highlight = Deps.autorun(function () {
           $(self.firstNode)
@@ -28,7 +28,7 @@ if (typeof Handlebars !== 'undefined' && typeof UI !== 'undefined' && typeof Spa
         };
       },
       destroyed: function () {
-        this.highlight.stop();
+        this.__component__.highlight && this.__component__.highlight.stop();
       },
     });
   });
